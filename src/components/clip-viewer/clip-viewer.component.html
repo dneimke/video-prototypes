@@ -1,0 +1,2 @@
+<video-player [source]="source" [allowSlide]='false' [autoPlay]='true' [timer$]='timer$' (currentTime$)="onCurrentTimeChange($event)"
+    (readyState$)='onMediaReadyState($event)' [playState$]='playState$'></video-player>

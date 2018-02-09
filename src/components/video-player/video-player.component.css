@@ -1,0 +1,12 @@
+.seek-button {
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  color: white;
+  line-height: 50px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  align-items: center;
+}
