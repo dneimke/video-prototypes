@@ -8,28 +8,11 @@ import { MediaSource, ClipEvent } from "../../models";
   selector: "video-player",
   template: `
     <vg-player (onPlayerReady)="onPlayerReady($event)">
-      <vg-overlay-play></vg-overlay-play>
-      <vg-buffering></vg-buffering>
-
-      <vg-scrub-bar>
-          <vg-scrub-bar-current-time  [vgSlider]="true"></vg-scrub-bar-current-time>
-          <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-      </vg-scrub-bar>
-
-      <vg-controls [vgAutohide]="true" [vgAutohideTime]="4"> 
-
+      
+      <vg-controls> 
           <vg-play-pause></vg-play-pause>
-          <vg-playback-button></vg-playback-button>
-
           <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
-
-          <vg-scrub-bar></vg-scrub-bar>
-          
-          <vg-track-selector></vg-track-selector>
-          <vg-mute></vg-mute>
           <vg-volume></vg-volume>
-
-          <vg-fullscreen></vg-fullscreen>
       </vg-controls>
       
       <video #media [vgMedia]="media" id="singleVideo" preload="auto">
