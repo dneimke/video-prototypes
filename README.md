@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.2.
 
+You can run the app in a browser by visiting: [https://stackblitz.com/github/dneimke/video-prototypes](https://stackblitz.com/github/dneimke/video-prototypes)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
