@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { VgAPI } from "videogular2/core";
 import { TimerService, ApplicationEventService } from "../../services";
 import { Observable } from "rxjs/Observable";
-import { MediaSource } from "../../models";
+import { MediaSource, ClipEvent } from "../../models";
 
 @Component({
   selector: "video-player",
@@ -21,20 +21,9 @@ import { MediaSource } from "../../models";
           <vg-play-pause></vg-play-pause>
           <vg-playback-button></vg-playback-button>
 
-          <div class="seek-control fa fa-clock-o">
-            <span aria-label="seek forward" class="seek-button button" role="button" tabindex="0" aria-valuetext="1"  (click)="seekForward(-5)">
-            <i class="material-icons">replay_5</i>
-            </span>
-          </div>
-          <div class="seek-control fa fa-clock-o">
-            <span aria-label="seek forward" class="seek-button button" role="button" tabindex="0" aria-valuetext="1"  (click)="seekForward(5)">
-              <i class="material-icons">forward_5</i>
-            </span>
-          </div>
-
           <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
 
-          <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+          <vg-scrub-bar></vg-scrub-bar>
           
           <vg-track-selector></vg-track-selector>
           <vg-mute></vg-mute>
@@ -53,11 +42,11 @@ import { MediaSource } from "../../models";
 })
 export class VideoPlayerComponent implements OnInit {
   @Input() source: MediaSource;
-  @Input() timer$: Observable<number>;
+  @Input() timer$: Observable<ClipEvent>;
   @Input() playState$: Observable<boolean>;
   @Input() autoPlay: boolean = false;
 
-  @Output() currentTime$ = new EventEmitter<number>();
+  @Output() currentTime$ = new EventEmitter<ClipEvent>();
   @Output() readyState$ = new EventEmitter<boolean>();
   api: VgAPI;
   showSlide = true;
@@ -66,7 +55,7 @@ export class VideoPlayerComponent implements OnInit {
     private timerService: TimerService,
     private applicationEventService: ApplicationEventService
   ) {
-    applicationEventService.navigateTo$.subscribe((time: number) => {
+    applicationEventService.navigateTo$.subscribe((time: ClipEvent) => {
       this.navigateTo(time);
     });
 
@@ -129,9 +118,9 @@ export class VideoPlayerComponent implements OnInit {
     console.info(`vg:mediaChanged`);
   }
 
-  navigateTo(time: number): void {
-    this.api.currentTime = time;
-    console.info(`vg:navigateTo ${time}`);
+  navigateTo(time: ClipEvent): void {
+    console.info(`vg:navigateTo `, time);
+    this.api.currentTime = time.seconds;
   }
 
   seekForward(seconds: number) {

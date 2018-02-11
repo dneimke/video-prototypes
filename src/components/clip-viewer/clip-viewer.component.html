@@ -1,2 +1,29 @@
-<video-player [source]="source" [allowSlide]='false' [autoPlay]='true' [timer$]='timer$' (currentTime$)="onCurrentTimeChange($event)"
-    (readyState$)='onMediaReadyState($event)' [playState$]='playState$'></video-player>
+<mat-toolbar color="warn">
+    <mat-toolbar-row>
+        <span>{{displayName}}</span>
+        <span class="spacer"></span>
+        <a mat-button (click)="share()" *ngIf='showShare'>
+            <mat-icon>share</mat-icon>
+        </a>
+        <a mat-button (click)="close()" *ngIf='showClose'>
+            <mat-icon>close</mat-icon>
+        </a>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-drawer-container>
+    <mat-drawer #drawer opened="true" mode="side">
+        <nav *ngIf="clips" class="sidenav-buttons">
+            <ul>
+                <li *ngFor="let clip of clips; let i=index;">
+                    <a (click)='navigateTo(clip, i)' [class.is-selected]="clip.seconds === selectedClip.seconds">
+                        {{i}} {{getClipname(clip)}}</a>
+                </li>
+            </ul>
+        </nav>
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <video-player [source]="source" [autoPlay]='true' [timer$]='timer$' (currentTime$)="onCurrentTimeChange($event)" (readyState$)='onMediaReadyState($event)'
+            [playState$]='playState$'></video-player>
+    </mat-drawer-content>
+</mat-drawer-container>

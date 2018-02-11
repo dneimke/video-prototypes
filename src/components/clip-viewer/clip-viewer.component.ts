@@ -45,7 +45,7 @@ export class ClipViewerComponent implements OnInit {
   getClipname(clip: ClipEvent): string {
     if (this.clipShortName) return this.clipShortName;
 
-    return clip.seconds.toString();
+    return `${clip.seconds.toString()} seconds`;
   }
 
   onCurrentTimeChange(currentTime: number) {
@@ -55,16 +55,16 @@ export class ClipViewerComponent implements OnInit {
       let tempIndex = this.selectedIndex;
       let stop = false;
 
-      console.info("[ClipViewer] onCurrentTimeChange", currentTime, lower, upper, tempIndex, stop);
+      // console.info("[ClipViewer] onCurrentTimeChange", currentTime, lower, upper, tempIndex, stop);
       if (currentTime > upper) {
-        console.info(`[ClipViewerComponent] ${currentTime} > ${upper}`);
+        // console.info(`[ClipViewerComponent] ${currentTime} > ${upper}`);
         if (tempIndex < this.clips.length - 1) {
           tempIndex++;
         } else {
           stop = true;
         }
       } else if (currentTime < lower) {
-        console.info(`[ClipViewerComponent] ${currentTime} < ${lower}`);
+        // console.info(`[ClipViewerComponent] ${currentTime} < ${lower}`);
         if (tempIndex > 0) {
           tempIndex--;
         }

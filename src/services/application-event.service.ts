@@ -2,11 +2,11 @@
 // http://amp.azure.net/libs/amp/latest/docs/index.html#release-notes
 
 import { Subject } from "rxjs/Subject";
-import { MediaLoadedEvent, MediaSource } from "../models";
+import { MediaLoadedEvent, MediaSource, ClipEvent } from "../models";
 
 export class ApplicationEventService {
   // Observable string source
-  private navigateToSource = new Subject<number>();
+  private navigateToSource = new Subject<ClipEvent>();
   private mediaLoadedSource = new Subject<MediaLoadedEvent>();
   private sourceChangedSource = new Subject<MediaSource>();
 
@@ -16,7 +16,7 @@ export class ApplicationEventService {
   sourceChanged$ = this.sourceChangedSource.asObservable();
 
   // Service message commands
-  navigateTo(time: number): void {
+  navigateTo(time: ClipEvent): void {
     this.navigateToSource.next(time);
   }
 
