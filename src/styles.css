@@ -1,1 +1,151 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/purple-green.css";
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+  color: #fff;
+  background-color: #555;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.basic-container {
+  padding: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+/*
+
+.orange {
+  background: #ff9d00;
+  color: #193549;
+}
+.green {
+  background: #bada55;
+  color: #193549;
+}
+.red {
+  background: #c95d63;
+  color: #fff;
+}
+.blue {
+  background: #496ddb;
+  color: #fff;
+}
+.yellow {
+  background: #ffc600;
+  color: #193549;
+}
+*/
+
+.orange,
+.green,
+.red,
+.blue,
+.yellow {
+  background: #f44336;
+  color: #fff;
+}
+
+.well {
+  border-radius: 0px;
+  border: none;
+  box-shadow: none;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav {
+  width: 17.5%;
+}
+/* 
+/* .mat-sidenav {
+    padding: 10px;
+}  */
+*/ .mat-sidenav-container {
+  min-height: 680px;
+}
+
+azure-media-player,
+.media-presenter {
+  width: 85%;
+  height: 499px;
+  padding: 3px;
+  background-color: #193549;
+}
+
+video-player {
+  width: 80%;
+  height: 499px;
+  margin-bottom: 6px;
+}
+
+/* Second version of timeline */
+
+*,
+:after,
+:before {
+  box-sizing: inherit;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+/* ********************************* */
+
+.sidenav-buttons ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidenav-buttons li {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  margin: 0;
+  padding: 0;
+  border-color: rgba(0, 0, 0, 0.06);
+  /* color: rgba(255, 255, 255, 0.87); */
+}
+
+.sidenav-buttons li > a {
+  box-sizing: border-box;
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 47px;
+  text-decoration: none;
+  transition: all 0.3s;
+  padding: 0 16px;
+  position: relative;
+}
+
+.sidenav-buttons li > a.is-selected,
+.sidenav-buttons li > a:focus,
+.sidenav-buttons li > a:hover {
+  background: #fafafa;
+  color: #3f51b5;
+}
+
+.sidenav-buttons li > a:hover {
+  cursor: pointer;
+}
+
+.sidenav-buttons h3 {
+  border: none;
+  font-size: 10px;
+  letter-spacing: 1px;
+  line-height: 24px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin: 0;
+  padding: 0 16px;
+  background: rgba(0, 0, 0, 0.32);
+  color: rgba(255, 255, 255, 0.87);
+}
